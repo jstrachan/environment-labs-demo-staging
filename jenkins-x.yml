@@ -1,1 +1,15 @@
 buildPack: environment-helmfile
+env:
+- name: JX_SECRETS_YAML
+  value: /tmp/secrets/jx/localSecrets/secrets.yml
+pipelineConfig:
+  pipelines:
+    overrides:
+      - pipeline: release
+        name: verify-preinstall
+        step:
+          sh: "echo disabling 'jx step verify preinstall' as using a local environment"
+      - pipeline: release
+        name: verify-jenkins-x-environment
+        step:
+          sh: "echo disabling 'jx step verify env' as using a local environment"
