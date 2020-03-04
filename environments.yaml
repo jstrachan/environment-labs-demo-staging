@@ -3,4 +3,3 @@ environments:
   default:
     values:
     - ../jx-requirements.values.yaml.gotmpl
-    - {{ requiredEnv "JX_SECRETS_YAML" }}
