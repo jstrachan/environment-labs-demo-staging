@@ -1,3 +1,63 @@
-helmfile: true
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/jstrachan/environment-labs-demo-staging.git
 cluster:
+  devEnvApprovers:
+  - jstrachan
+  environmentGitOwner: jstrachan
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
   namespace: jx-staging
+  provider: gke
+environments:
+- gitKind: github
+  gitServer: https://github.com
+  ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  owner: jstrachan
+  promotionStrategy: Auto
+  repository: environment-labs-demo-staging
+gitops: true
+helmfile: true
+ingress:
+  domain: ""
+  externalDNS: false
+  namespaceSubDomain: -jx-staging.
+  tls:
+    email: ""
+    enabled: false
+    production: false
+kaniko: true
+repository: nexus
+secretStorage: local
+storage:
+  backup:
+    enabled: false
+    url: ""
+  logs:
+    enabled: false
+    url: ""
+  reports:
+    enabled: false
+    url: ""
+  repository:
+    enabled: false
+    url: ""
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
+versionStream:
+  ref: v1.0.378
+  url: https://github.com/jenkins-x/jenkins-x-versions.git
+webhook: lighthouse
